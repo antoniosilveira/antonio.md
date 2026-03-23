@@ -1,4 +1,4 @@
-baseURL = "https://antonio.md/"
+baseURL = "/"
 languageCode = "en-us"
 title = "Antonio Silveira"
 theme = "terminal"
