@@ -1,0 +1,53 @@
+baseURL = "https://antonio.md/"
+languageCode = "en-us"
+title = "Antonio Silveira"
+theme = "terminal"
+
+[params]
+  # Terminal theme settings
+  themeColor = "green"
+  showMenuItems = 2
+  fullWidthTheme = false
+  centerTheme = true
+  autoCover = true
+  showLastUpdated = false
+
+  # Description for RSS and meta
+  description = "Personal blog of Antonio Silveira"
+
+[params.twitter]
+  creator = ""
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    title = "Antonio Silveira"
+    subtitle = ""
+    owner = "Antonio Silveira"
+    menuMore = "Show more"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    missingContentMessage = "Page not found..."
+    missingBackButtonLabel = "Back to home page"
+
+    [languages.en.params.logo]
+      logoText = "antonio.md"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+        weight = 1
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts"
+        weight = 2
+
+[module]
+  [[module.imports]]
+    path = "github.com/panr/hugo-theme-terminal"
