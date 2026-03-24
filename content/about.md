@@ -5,7 +5,7 @@ draft: false
 ---
 I'm Antonio Silveira, a technology executive based in the San Francisco Bay Area.
 
-Currently CTO at Attentive (https://attentive.com/) and Board Member at Stone (https://stone.co/).
+Currently CTO at [Attentive](https://attentive.com/) and Board Member at [Stone](https://stone.co/).
 
 25+ years leading engineering and product teams across SaaS, AI, Media, Consumer Internet, and FinTech. Previously CTO at Nextdoor, VP of Engineering at GoDaddy, and senior engineering leader at Yahoo. Part of the executive teams that took Nextdoor and GoDaddy public.
 
