@@ -12,4 +12,4 @@ Currently CTO at [Attentive](https://attentive.com) and Board Member at [Stone](
 
 ---
 
-This page was buyilt and is maintained by my Agents.
+This page was built and is maintained by my Agents.
