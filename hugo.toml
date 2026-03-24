@@ -11,6 +11,7 @@ theme = "terminal"
   autoCover = true
   showLastUpdated = false
   description = "Personal blog of Antonio Silveira"
+  ReadMore = "Read more"
 
 [params.twitter]
   creator = ""
