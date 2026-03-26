@@ -12,9 +12,9 @@ Here's how it works in practice.
 
 ## The Setup
 
-I have agents with different scopes: one focused on complex execution, code, and infrastructure. Another focused on scheduling, coordination, and lighter repeatable tasks more related to personal productivity. I also have a third Agent only focus on communications, but that dedicated post about it.
+I have agents with different scopes: one focused on complex execution, code, and infrastructure. Another focused on scheduling, coordination, and lighter repeatable tasks more related to personal productivity. I also have a third Agent only focus on communications, but that deserves dedicated post about it.
 
-These agents use a shared workspace on top of GitHub and and coordinate their execution based on project boards and issues on GH. Everything is auditable.
+These agents use a shared workspace on GitHub and coordinate their execution based on project boards and GH Issues. Everything is auditable.
 
 ---
 
@@ -44,7 +44,7 @@ Every task follows the same pattern using the [superpowers skill](https://github
 
 ### 6. Verification before "done"
 
-Before anything is called complete, it gets tested through the real production trigger, like an agent demo at the end of a sprint. The agent has to show me evidence it works, not just tell me it does.
+Before anything is called complete, it gets tested through the real production trigger, like an "agent demo" at the end of a sprint. The agent has to show me evidence it works, not just tell me it does.
 
 ### 7. I close the issue
 
@@ -54,7 +54,7 @@ The agent never moves a GH issue to Done without my explicit confirmation. That 
 
 ## Config Over Code
 
-Any automation with rules, thresholds, or criteria gets a separate config file. The agent builds to that pattern by default. I can update behavior without touching code.
+Any automation with rules, thresholds, or criteria gets a separate config file. The agent builds to that pattern by default. I can quickly update behavior without having to update the code.
 
 ---
 
@@ -62,9 +62,8 @@ Any automation with rules, thresholds, or criteria gets a separate config file. 
 
 - I spend more time thinking about my workflows and how I can automate them and remove my own inefficiencies. 
 - I learn a lot as I follow the agent reasoning to define a solution and the the respective implementation.
-- Every change is traceable: issue, design doc, commit history and local chnage logs.
+- Every change is traceable: issue, design doc, commit history and local change logs.
 - No surprise scope creep, the agent works from approved specs
-- I can hand any project to a teammate and the full context is already in GitHub
 
 ---
 
@@ -72,8 +71,6 @@ Any automation with rules, thresholds, or criteria gets a separate config file. 
 
 The agent handles execution. I handle the requirements and the final approval. The workflow enforces that boundary explicitly. There are hard gates where the agent must stop and wait for my approval before moving forward.
 
- That's the design. That's not a limitation.
+That's the design. That's not a limitation.
 
 ---
-
-/Antonio
