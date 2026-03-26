@@ -16,7 +16,7 @@ This is where I'm going to start writing it down.
 
 The specific thing I want to explore here is the shift I'm living through right now: what it actually looks like to work in an agentic-first way. Not the hype version. The real version, with the friction and the surprises and the things that don't work yet.
 
-I have two sides on this journey, my corporate experience leading engineering teams trough this transformation and I also run a small ecosystem of AI agents that help me be more productive with communications, execution, and coordination. I use agents to write code, draft messages, research topics, manage my personal calendar, help me with personal travel. I've been learning a lot about where agents are genuinely useful, where they need supervision, and where handing something off without understanding the output is a bad idea.
+I have two sides on this journey, my corporate experience leading engineering teams through this transformation and I also run a small ecosystem of AI agents that help me be more productive with communications, execution, brainstorming, and coordination. I use agents to write code, draft messages, research topics, manage my personal calendar, help me with personal travel. I've been learning a lot about where agents are genuinely useful, where they need supervision, and where handing something off without understanding the output is a bad idea.
 
 That's the thread I want to pull on here: what it means to be self-aware about how you use AI, how you build trust with it, and how you stay in the loop without doing all the work yourself.
 
