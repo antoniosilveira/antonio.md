@@ -11,17 +11,12 @@
 </div>
 
 <style>
-.post-header {
+.post-meta-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-}
-
-.post-header .post-title {
-  margin: 0;
-  flex: 1;
 }
 
 .post-reactions {
@@ -69,8 +64,9 @@
 }
 
 @media (max-width: 600px) {
-  .post-header {
+  .post-meta-row {
     flex-direction: column;
+    align-items: flex-start;
   }
   .post-reactions {
     margin-top: 0.5rem;
