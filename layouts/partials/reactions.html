@@ -1,5 +1,4 @@
 <div class="post-reactions" id="reactions">
-  <span class="reactions-label">[react]</span>
   <button class="reaction-btn" data-emoji="heart" title="Love it">
     <span class="emoji">❤️</span><span class="count" id="count-heart">0</span>
   </button>
@@ -12,32 +11,38 @@
 </div>
 
 <style>
-.post-reactions {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--accent);
-  font-family: monospace;
+.post-header {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
-.reactions-label {
-  color: var(--accent);
+.post-header .post-title {
+  margin: 0;
+  flex: 1;
+}
+
+.post-reactions {
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
 }
 
 .reaction-btn {
   background: transparent;
   border: 1px solid var(--accent);
   color: var(--accent);
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   cursor: pointer;
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
   transition: background 0.2s, transform 0.1s;
 }
 
@@ -56,11 +61,20 @@
 }
 
 .reaction-btn .emoji {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .reaction-btn .count {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .post-header {
+    flex-direction: column;
+  }
+  .post-reactions {
+    margin-top: 0.5rem;
+  }
 }
 </style>
 
@@ -70,7 +84,6 @@
   const postSlug = window.location.pathname.split('/').filter(Boolean).pop();
   const storageKey = `reactions:${postSlug}`;
 
-  // Get already-reacted emojis from localStorage
   function getReacted() {
     try {
       return JSON.parse(localStorage.getItem(storageKey)) || [];
@@ -87,7 +100,6 @@
     }
   }
 
-  // Fetch current counts
   async function fetchCounts() {
     try {
       const res = await fetch(`${API_BASE}?post=${encodeURIComponent(postSlug)}`);
@@ -103,7 +115,6 @@
     }
   }
 
-  // Mark already-reacted buttons
   function markReacted() {
     const reacted = getReacted();
     document.querySelectorAll('.reaction-btn').forEach(btn => {
@@ -113,12 +124,10 @@
     });
   }
 
-  // Handle click
   async function handleReaction(e) {
     const btn = e.currentTarget;
     const emoji = btn.dataset.emoji;
     
-    // Check if already reacted
     if (getReacted().includes(emoji)) {
       return;
     }
@@ -138,7 +147,6 @@
     }
   }
 
-  // Initialize
   document.addEventListener('DOMContentLoaded', () => {
     fetchCounts();
     markReacted();
