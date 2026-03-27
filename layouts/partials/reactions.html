@@ -1,0 +1,150 @@
+<div class="post-reactions" id="reactions">
+  <span class="reactions-label">[react]</span>
+  <button class="reaction-btn" data-emoji="heart" title="Love it">
+    <span class="emoji">❤️</span><span class="count" id="count-heart">0</span>
+  </button>
+  <button class="reaction-btn" data-emoji="fire" title="Fire">
+    <span class="emoji">🔥</span><span class="count" id="count-fire">0</span>
+  </button>
+  <button class="reaction-btn" data-emoji="robot" title="Robot approved">
+    <span class="emoji">🤖</span><span class="count" id="count-robot">0</span>
+  </button>
+</div>
+
+<style>
+.post-reactions {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--accent);
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.reactions-label {
+  color: var(--accent);
+}
+
+.reaction-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.reaction-btn:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.reaction-btn:active {
+  transform: scale(0.95);
+}
+
+.reaction-btn.reacted {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.reaction-btn .emoji {
+  font-size: 1rem;
+}
+
+.reaction-btn .count {
+  font-size: 0.85rem;
+}
+</style>
+
+<script>
+(function() {
+  const API_BASE = '/api/reactions';
+  const postSlug = window.location.pathname.split('/').filter(Boolean).pop();
+  const storageKey = `reactions:${postSlug}`;
+
+  // Get already-reacted emojis from localStorage
+  function getReacted() {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey)) || [];
+    } catch {
+      return [];
+    }
+  }
+
+  function setReacted(emoji) {
+    const reacted = getReacted();
+    if (!reacted.includes(emoji)) {
+      reacted.push(emoji);
+      localStorage.setItem(storageKey, JSON.stringify(reacted));
+    }
+  }
+
+  // Fetch current counts
+  async function fetchCounts() {
+    try {
+      const res = await fetch(`${API_BASE}?post=${encodeURIComponent(postSlug)}`);
+      if (res.ok) {
+        const counts = await res.json();
+        for (const [emoji, count] of Object.entries(counts)) {
+          const el = document.getElementById(`count-${emoji}`);
+          if (el) el.textContent = count;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to fetch reactions:', e);
+    }
+  }
+
+  // Mark already-reacted buttons
+  function markReacted() {
+    const reacted = getReacted();
+    document.querySelectorAll('.reaction-btn').forEach(btn => {
+      if (reacted.includes(btn.dataset.emoji)) {
+        btn.classList.add('reacted');
+      }
+    });
+  }
+
+  // Handle click
+  async function handleReaction(e) {
+    const btn = e.currentTarget;
+    const emoji = btn.dataset.emoji;
+    
+    // Check if already reacted
+    if (getReacted().includes(emoji)) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}?post=${encodeURIComponent(postSlug)}&emoji=${emoji}`, {
+        method: 'POST',
+      });
+      if (res.ok) {
+        const data = await res.json();
+        document.getElementById(`count-${emoji}`).textContent = data.count;
+        btn.classList.add('reacted');
+        setReacted(emoji);
+      }
+    } catch (e) {
+      console.error('Failed to send reaction:', e);
+    }
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchCounts();
+    markReacted();
+    document.querySelectorAll('.reaction-btn').forEach(btn => {
+      btn.addEventListener('click', handleReaction);
+    });
+  });
+})();
+</script>

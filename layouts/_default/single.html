@@ -46,6 +46,8 @@
     {{- end -}}
   </div>
 
+  {{ partial "reactions.html" . }}
+
   {{ partial "share.html" . }}
 
   {{ if eq .Type $.Site.Params.contentTypeName }}
