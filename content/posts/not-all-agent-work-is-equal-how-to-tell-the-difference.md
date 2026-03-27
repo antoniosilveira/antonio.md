@@ -1,8 +1,8 @@
-—
+---
 title: “Not All Agent Work Is Equal. Here’s How to Tell the Difference”
 date: 2026-03-27
 draft: false
-—
+---
 
 
 One of the most useful frameworks I’ve seen lately came from one of our most AI-forward engineers, [Bian Jiang](https://www.linkedin.com/in/5aec6l65/), at our last Engineering All Hands at [Attentive](https://www.attentive.com)
